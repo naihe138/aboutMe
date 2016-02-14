@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body{ background: #000}
+			#c1{ background: #FFFFFF; position: absolute; left: 100px; top: 100px;}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oC = document.getElementById("c1");
+				var oGC = oC.getContext("2d");
+				var setArr = []//存储绘制圆的数据；
+				setInterval(function(){
+					
+					oGC.clearRect(0, 0, oC.width, oC.height);
+					
+					console.log(setArr.length)
+					for(var i = 0; i < setArr.length; i++){
+						setArr[i].num += 3;
+						setArr[i].x = setArr[i].starX + Math.sin(setArr[i].num*Math.PI/180)*setArr[i].step;
+						setArr[i].y = setArr[i].starY - (setArr[i].num*Math.PI/180)*setArr[i].step;
+						if(setArr[i].y < 100){
+							setArr.splice(i, 1);
+						}
+					}
+					
+					for(var i = 0; i < setArr.length; i++){
+						//填充随机颜色
+						oGC.fillStyle = "rgba("+setArr[i].c1+", "+setArr[i].c2+", "+setArr[i].c3+", "+setArr[i].a+")";
+						//绘制圆
+						oGC.beginPath();
+							oGC.moveTo(setArr[i].x , setArr[i].y);
+							oGC.arc(setArr[i].x, setArr[i].y, setArr[i].r, 0, 360*Math.PI/180);
+						oGC.closePath();
+						oGC.fill();
+					}
+					
+				},1000/60)
+				
+				setInterval(function(){
+					var x = Math.random()*oC.width;
+					var y = oC.height - 10;
+					var r = Math.random()*6+4;
+					//随机生成颜色
+					var c1 = Math.round(Math.random()*255);
+					var c2 = Math.round(Math.random()*255);
+					var c3 = Math.round(Math.random()*255);
+					var a = 1;
+					var starX = x;
+					var starY = y;
+					var num = 0;
+					var step = Math.random()*10+30;
+					setArr.push({
+						x : x,
+						y : y,
+						r : r,
+						c1 :　c1,
+						c2 : c2, 
+						c3 : c3,
+						a : a,
+						starX : x,
+						starY : y,
+						num : num,
+						step : step
+					})
+										
+				},200)
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="c1" width="200" height="500"></canvas>
+	</body>
+</html>

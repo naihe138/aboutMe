@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body{ background: #000}
+			#c1{ background: #FFFFFF;}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oC = document.getElementById("c1");
+				var oGC = oC.getContext("2d");
+				var setArr = []//存储绘制圆的数据；
+				setInterval(function(){
+					
+					oGC.clearRect(0, 0, oC.width, oC.height);
+					
+					console.log(setArr.length)
+					for(var i = 0; i < setArr.length; i++){
+						setArr[i].r += 1; //控制每个半径的大小 ，让他越来越大
+						setArr[i].a -= 0.01; //淡出效果
+						if(setArr[i].a<=0){
+							setArr.splice(i, 1);
+						}
+					}
+					
+					for(var i = 0; i < setArr.length; i++){
+						//填充随机颜色
+						oGC.fillStyle = "rgba("+setArr[i].c1+", "+setArr[i].c2+", "+setArr[i].c3+", "+setArr[i].a+")";
+						//绘制圆
+						oGC.beginPath();
+							oGC.moveTo(setArr[i].x , setArr[i].y);
+							oGC.arc(setArr[i].x, setArr[i].y, setArr[i].r, 0, 360*Math.PI/180);
+						oGC.closePath();
+						oGC.fill();
+					}
+					
+				},1000/60)
+				
+				setInterval(function(){
+					var x = Math.random()*oC.width;
+					var y = Math.random()*oC.height;
+					var r = 10;
+					//随机生成颜色
+					var c1 = Math.round(Math.random()*255);
+					var c2 = Math.round(Math.random()*255);
+					var c3 = Math.round(Math.random()*255);
+					var a = 1
+					setArr.push({
+						x : x,
+						y : y,
+						r : r,
+						c1 :　c1,
+						c2 : c2, 
+						c3 : c3,
+						a : a
+					})
+										
+				},500)
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="c1" width="500" height="500"></canvas>
+	</body>
+</html>

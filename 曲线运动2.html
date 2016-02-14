@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			#div1{ width: 10px; height: 10px; background: red; position: absolute; left: 100px; top: 300px;}
+			.box{ border: 1px solid #000; position: absolute;}
+		</style>
+		<script type="text/javascript">
+//			var a = 30;
+//			var b = Math.sin(30*Math.PI/180)
+//			//弧度=角度*PI/180
+//			alert(b)
+			window.onload = function(){
+				var oDiv = document.getElementById("div1");
+				var starX = oDiv.offsetLeft;
+				var starY = oDiv.offsetTop;
+				var num = 0;
+				var step = 100;
+				//Math.random()*(n-m)+m
+				setInterval(function(){
+					num++;
+					
+					console.log(num*Math.PI/180);
+					oDiv.style.left = starX + (num*Math.PI/180)*step + "px";
+					oDiv.style.top = starY - Math.sin(num*Math.PI/180)*step + "px";
+					var cDiv = document.createElement("div");
+					cDiv.className = "box";
+					cDiv.style.left = oDiv.offsetLeft + "px";
+					cDiv.style.top = oDiv.offsetTop + "px";
+					document.body.appendChild(cDiv);
+					
+				},30)
+			}
+
+			
+		</script>
+	</head>
+	<body>
+		<div id="div1">
+			
+		</div>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			body{ background: #000}
+			#c1{ background: #FFFFFF;}
+		</style>
+		<script type="text/javascript">
+			window.onload = function(){
+				var oC = document.getElementById("c1");
+				var oGC = oC.getContext("2d");
+				var num = 0;
+				oGC.strokeRect(0, 0, 100, 100);
+				setInterval(function(){
+					num++;
+					oGC.clearRect(0, 0, oC.width, oC.height)
+					oGC.strokeRect(num, num, 100, 100);
+				},30)
+			}
+		</script>
+	</head>
+	<body>
+		<canvas id="c1" width="500" height="500"></canvas>
+	</body>
+</html>
