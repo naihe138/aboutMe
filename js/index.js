@@ -169,6 +169,11 @@ he.app.showloading = function(){
 	var oSpan = oLoading.getElementsByTagName("span")[0];
 	
 	var arr = [
+		"show1.jpg",
+		"show2.jpg",
+		"show3.jpg",
+		"show4.jpg",
+		"show5.jpg",
 		"about2.jpg",
 		"about3.jpg",
 		"about4.jpg",
@@ -183,6 +188,18 @@ he.app.showloading = function(){
 		"worksimg2.jpg",
 		"worksimg3.jpg",
 		"worksimg4.jpg",
+		"skew01.png",
+		"skew02.png",
+		"skew03.png",
+		"skew04.png",
+		"skew05.png",
+		"skew06.png",
+		"skew07.png",
+		"skew08.png",
+		"skew09.png",
+		"skew10.png",
+		"skew11.png",
+		"skew12.png"
 	];
 	var iNow = 0;
 	for(var i= 0; i < arr.length; i++){
