@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			html,body,p,textarea{
+				margin: 0;
+				padding: .0;
+			}
+			html,body{
+				background: saddlebrown;
+				position: relative;
+			}
+			#popup{
+				position: fixed;
+				width: 100%;
+				height: 100%;
+				background: rgba(0,0,0,0.4);
+				font-size: 12px;
+				top: 0;
+				left: 0;
+				display: none;
+			}
+			#popup .popupBox{
+				background: #FFF;
+				width: 700px;
+				overflow: hidden;
+				margin: 0 auto;
+				box-sizing: border-box;
+				padding: 10px;
+			}
+			#popup .popupBox .pBody{
+				width: 100%;
+				margin-top: 20px;
+			}
+			#popup .popupBox .prows{
+				clear: both;
+				overflow: hidden;
+				margin-bottom: 10px;
+			}
+			#popup .popupBox .prows span{
+				float: left;
+				margin-right: 10px;
+			}
+			#popup .popupBox .prows textarea{
+				float: left;
+				border: 1px solid #CCCCCC;
+				resize: none;
+				width: 600px;
+				outline: none;
+				box-sizing: border-box;
+				padding: 10px;
+			}
+			#popup .popupBox .prows .imgBox{
+				float: left;
+				border: 1px solid #CCCCCC;
+				width: 600px;
+				box-sizing: border-box;
+				padding: 10px;
+			}
+			#popup .popupBox .prows .imgBox img{
+				width: 100px;
+				height: 100px;
+			}
+			#popup .popupBox .prows .marks {
+				clear: both;
+				color: #ACACB4;
+				line-height: 34px;
+			}
+			#popup .popupBox .pFooter {
+				clear: both;
+				overflow: hidden;
+			}
+			#popup .popupBox .pFooter .fBtnBox{
+				width: 200px;
+				float: right;
+			}
+			#popup .popupBox .pFooter .fBtnBox span{
+				width: 80px;
+				display: inline-block;
+				line-height: 24px;
+				border: 1px solid #CCCCCC;
+				text-align: center;
+				margin-left: 10px;
+				border-radius: 4px;
+			}
+			#popup .popupBox .pFooter .fBtnBox span:nth-last-of-type(1){
+				border: 1px solid blue;
+				background: blue;
+				color: #FFFDEF;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<h1 id="hh1" style="color: #fff;">点我弹出框</h1>
+		
+		<div id="popup">
+			<div class="popupBox">
+				<div class="pBody">
+					<div class="prows">
+						<span>我的建议:</span>
+						<textarea name="" rows="3" cols="" placeholder="请填写我的建议"></textarea>
+					</div>
+					<div class="prows">
+						<span>上传图片:</span>
+						<div class="imgBox">
+							<img src="http://pic.pc6.com/up/2015-9/201593017545.png" alt="" />
+							<img src="http://img4.imgtn.bdimg.com/it/u=776350465,3028356786&fm=214&gp=0.jpg"/>
+						</div>
+						<p class="marks">上传图片解释·····</p>
+					</div>
+				</div>
+				<div class="pFooter">
+					<div class="fBtnBox">
+						<span id="close">取消</span>
+						<span>确认</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			// 弹窗模块
+			(function (){
+				var viewWidth = $(window).width();
+				var viewHight = $(window).height();
+				var popup = $('#popup');
+				var popupBox = popup.find('.popupBox');
+				popup.css({
+					width: viewWidth,
+					height: viewHight
+				})
+				
+				$('#hh1').on('click', function(){
+					popup.fadeIn()
+				})
+				// 取消
+				$('#close').on('click', function(){
+					popup.fadeOut()
+				})
+				
+			})();
+		})
+	</script>
+</html>
